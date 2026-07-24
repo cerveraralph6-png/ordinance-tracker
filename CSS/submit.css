@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --primary: #1e3a8a;
+    --accent: #2563eb;
+    --text-dark: #0f172a;
+    --text-muted: #64748b;
+    --bg-light: #f8fafc;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #f1f5f9 url('../Imag3s/baguio-logo-gov.png') no-repeat center center fixed;
+    background-size: 600px;
+    background-blend-mode: overlay;
+    color: var(--text-dark);
+}
+
+/* Nav Styles */
+.portal-nav {
+    height: 80px; background: rgba(255,255,255,0.9); backdrop-filter: blur(10px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; border-bottom: 1px solid #e2e8f0; position: fixed; top:0; width:100%; z-index:100;
+    box-sizing: border-box;
+}
+.nav-left { display: flex; align-items: center; gap: 15px; }
+.nav-logo { height: 45px; }
+.nav-titles h1 { font-size: 1.1rem; margin: 0; color: var(--primary); font-weight: 800; }
+.nav-titles span { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600; }
+
+.btn-nav-light {
+    background: white; border: 1px solid #e2e8f0; padding: 10px 20px; border-radius: 10px;
+    font-weight: 700; color: var(--primary); cursor: pointer; transition: 0.2s;
+}
+
+/* Layout */
+.submit-container { max-width: 800px; margin: 120px auto 60px; padding: 0 20px; }
+
+.submit-header { text-align: center; margin-bottom: 40px; }
+.submit-header h1 { font-size: 2.2rem; font-weight: 800; color: var(--primary); margin-bottom: 10px; }
+.submit-header p { color: var(--text-muted); line-height: 1.6; }
+
+/* The Form Card */
+.form-card {
+    background: white; padding: 40px; border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.05); border: 1px solid #eef2f6;
+}
+
+.form-group { margin-bottom: 25px; display: flex; flex-direction: column; gap: 8px; }
+.form-group label { font-size: 0.85rem; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 0.5px; }
+
+.form-group input[type="text"], 
+.form-group textarea {
+    padding: 15px; border-radius: 12px; border: 1.5px solid #e2e8f0;
+    background: var(--bg-light); font-size: 1rem; outline: none; transition: 0.3s;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: var(--accent); background: white; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+/* Styled File Upload */
+.file-upload-wrapper { position: relative; width: 100%; height: 100px; }
+.file-input {
+    position: absolute; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 2;
+}
+.file-dummy {
+    position: absolute; width: 100%; height: 100%; border: 2px dashed #cbd5e1;
+    background: var(--bg-light); border-radius: 12px; display: flex; 
+    flex-direction: column; align-items: center; justify-content: center; transition: 0.3s;
+}
+.file-upload-wrapper:hover .file-dummy { background: #eff6ff; border-color: var(--accent); }
+
+.btn-submit {
+    width: 100%; background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white; border: none; padding: 18px; border-radius: 15px;
+    font-weight: 800; font-size: 1rem; cursor: pointer; transition: 0.3s;
+    margin-top: 10px; box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+}
+.btn-submit:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
+.submission-note {
+    margin-top: 30px; padding-top: 25px; border-top: 1px solid #f1f5f9;
+    color: var(--text-muted); font-size: 0.85rem; line-height: 1.6;
+}
+
+/* Animations */
+.fade-in { animation: fadeIn 0.6s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }

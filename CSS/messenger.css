@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --primary: #2563eb;
+    --primary-light: #eff6ff;
+    --success: #10b981;
+    --danger: #ef4444;
+    --border: #e2e8f0;
+    --bg-main: #f1f5f9;
+    --text-dark: #0f172a;
+    --text-muted: #64748b;
+}
+
+/* --- 1. FIXED VIEWPORT LOGIC --- */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+body.messenger-body { 
+    background: var(--bg-main); 
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height for mobile browsers */
+    overflow: hidden; /* Prevents body scroll */
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- 2. NAVIGATION --- */
+/* --- 2. NAVIGATION (REFINED) --- */
+.table-nav {
+    position: fixed; top: 0; left: 0; right: 0; height: 70px;
+    background: white; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; z-index: 1000;
+    flex-shrink: 0;
+}
+
+.nav-left { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    min-width: 0; /* Allows text to shrink */
+}
+
+.nav-left div { overflow: hidden; }
+
+.nav-left h1 { 
+    font-size: 1rem; 
+    font-weight: 800; 
+    color: #0f172a; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+
+.nav-actions { 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    flex-shrink: 0; /* Prevents buttons from squishing */
+}
+
+/* Matching Dashboard Button Styles */
+.btn-home-style { 
+    background: var(--success); 
+    color: white; border: none; 
+    padding: 8px 16px; border-radius: 8px; 
+    font-weight: 700; font-size: 0.85rem; 
+    cursor: pointer; white-space: nowrap;
+}
+
+.btn-logout-style { 
+    background: white; color: var(--danger); 
+    border: 1px solid #fee2e2; 
+    padding: 8px 16px; border-radius: 8px; 
+    font-weight: 700; font-size: 0.85rem; 
+    cursor: pointer; white-space: nowrap;
+}
+
+/* --- 3. MAIN LAYOUT --- */
+.messenger-main { 
+    flex: 1; /* Take up all space between Nav and bottom */
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    margin-top: 65px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; 
+}
+
+.messenger-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 10px;
+    flex-shrink: 0;
+}
+
+.msg-grid { 
+    display: flex; /* Switched from grid to flex for better height control */
+    flex: 1; 
+    background: white; 
+    border-radius: 20px; 
+    border: 1px solid var(--border); 
+    overflow: hidden; 
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+/* --- 4. SIDEBAR --- */
+.user-list { 
+    width: 300px;
+    border-right: 1px solid var(--border); 
+    overflow-y: auto; 
+    background: #fcfdfe; 
+    flex-shrink: 0;
+}
+.user-item { padding: 18px 20px; border-bottom: 1px solid #f1f5f9; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.user-item.active { background: var(--primary-light); border-left: 5px solid var(--primary); }
+
+/* --- 5. CHAT PANE --- */
+.msg-pane { 
+    display: flex; 
+    flex-direction: column; 
+    flex: 1; 
+    width: 100%;
+    overflow: hidden; 
+}
+
+.chat-header { 
+    margin-top: 0px;
+    padding: 15px 20px; 
+    border-bottom: 1px solid var(--border); 
+    font-weight: 800; 
+    color: var(--text-dark); 
+    background: white;
+    flex-shrink: 0;
+}
+
+.msg-history { 
+    flex: 1; 
+    padding: 20px; 
+    overflow-y: auto; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px; 
+    background: #fff; 
+}
+
+.bubble-wrapper { display: flex; flex-direction: column; width: 100%; }
+.bubble-wrapper.sent { align-items: flex-end; }
+.bubble-wrapper.received { align-items: flex-start; }
+
+.bubble { padding: 10px 16px; border-radius: 18px; font-size: 0.95rem; line-height: 1.4; max-width: 80%; word-wrap: break-word; }
+.sent .bubble { background: var(--primary); color: white; border-bottom-right-radius: 4px; }
+.received .bubble { background: #f1f5f9; color: #1e293b; border-bottom-left-radius: 4px; border: 1px solid var(--border); }
+
+.reply-quote { background: rgba(0,0,0,0.05); padding: 8px; border-left: 3px solid var(--primary); margin-bottom: 5px; font-size: 0.8rem; border-radius: 4px; font-style: italic; }
+.reply-link { font-size: 0.65rem; font-weight: 800; color: #cbd5e1; text-transform: uppercase; margin-top: 4px; cursor: pointer; }
+
+/* --- 6. FORM AREA (THE FIX) --- */
+.msg-form { 
+    padding: 15px 20px; 
+    border-top: 1px solid var(--border); 
+    display: flex; 
+    gap: 10px; 
+    background: #fff; 
+    align-items: center; 
+    flex-shrink: 0; /* Prevents form from being pushed off-screen */
+}
+.msg-form input { 
+    flex: 1; 
+    padding: 12px 15px; 
+    border-radius: 10px; 
+    border: 1.5px solid var(--border); 
+    outline: none; 
+    font-size: 1rem; 
+}
+
+
+/* --- 7. MOBILE RESPONSIVE FIXES --- */
+@media (max-width: 768px) {
+
+.table-nav { 
+        height: 65px; 
+        padding: 0 15px; 
+    }
+
+    .nav-left img { height: 35px; }
+    
+    /* Hide the sub-text (City Council) on mobile to save space */
+    .nav-left span { display: none !important; }
+
+    /* Make main title smaller so buttons fit */
+    .nav-left h1 { font-size: 0.85rem; }
+
+    .nav-actions { gap: 6px; }
+
+    .btn-home-style, .btn-logout-style { 
+        padding: 6px 12px; 
+        font-size: 0.75rem; 
+    }
+
+    .messenger-main { padding: 0; } /* Remove main padding for full-screen feel */
+    
+    .msg-grid { border-radius: 0; border: none; }
+    .user-list { width: 100%; border-right: none; }
+    
+    .mobile-hide { display: none !important; }
+
+    .bubble { max-width: 88%; }
+    .msg-history { padding: 15px 10px; }
+    
+    /* Extra padding for iOS/Android home indicators */
+    .msg-form { 
+        padding: 10px 15px 25px 15px; 
+    }
+        h2{
+        padding-right: 20px; padding-top: 5px;
+    }
+}
+
+@media (max-width: 400px) {
+    
+    /* On extremely small screens, only show "SP Portal" */
+    .nav-left h1::after { content: "SP Portal"; }
+    .nav-left h1 { font-size: 0; } /* Hide original long text */
+    .nav-left h1::after { font-size: 0.85rem; }
+    
+    .nav-left img { height: 30px; }
+}
+
+.btn-nav { background: #fff; border: 1px solid var(--border); padding: 8px 16px; border-radius: 8px; font-weight: 700; font-size: 0.8rem; cursor: pointer; padding-right: 20px; padding-top: 10px; margin-top: 10px; margin-left: 15px;}

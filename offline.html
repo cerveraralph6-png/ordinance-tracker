@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline | BCH Portal</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            max-width: 400px;
+        }
+        img { width: 80px; margin-bottom: 20px; }
+        h1 { color: #1e3a8a; font-size: 24px; margin-bottom: 10px; }
+        p { color: #64748b; line-height: 1.6; }
+        .retry-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: #1e3a8a;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Connection Lost</h1>
+        <p>It seems you are currently offline. Please check your internet connection to access the BCH Database.</p>
+        <a href="index.php" class="retry-btn">Try Reconnecting</a>
+    </div>
+</body>
+</html>

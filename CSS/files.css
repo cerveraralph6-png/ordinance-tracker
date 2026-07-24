@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --fm-primary: #2563eb;
+    --fm-success: #10b981;
+    --fm-danger: #ef4444;
+    --fm-border: #e2e8f0;
+    --fm-bg: #f8fafc;
+    --fm-text: #0f172a;
+    --fm-text-muted: #64748b;
+}
+
+/* --- 1. BASE --- */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+body.files-page { background: #f1f5f9; padding-top: 80px; min-height: 100vh; color: var(--fm-text); }
+
+/* --- 2. NAVIGATION --- */
+.table-nav {
+    position: fixed; top: 0; left: 0; right: 0; height: 70px;
+    background: white; border-bottom: 1px solid var(--fm-border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; z-index: 1000;
+}
+.nav-actions { display: flex; gap: 10px; }
+.btn-home { background: var(--fm-success); color: white; border: none; padding: 8px 18px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+.btn-nav.logout { color: var(--fm-danger); border: 1px solid #fee2e2; padding: 8px 18px; border-radius: 8px; font-weight: 700; cursor: pointer; background: white; }
+
+/* --- 3. LAYOUT --- */
+main.files-main { max-width: 1300px; margin: 0 auto; padding: 20px; }
+
+.fm-card {
+    background: white; border-radius: 20px; border: 1px solid var(--fm-border);
+    padding: 40px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.fm-header { margin-bottom: 30px; border-bottom: 2px solid var(--fm-border); padding-bottom: 15px; }
+.fm-header h1 { font-size: 1.8rem; font-weight: 800; color: var(--fm-text); }
+
+/* --- 4. UPLOAD ZONE --- */
+.upload-zone {
+    background: var(--fm-bg); border: 2px dashed #cbd5e1;
+    border-radius: 16px; padding: 40px; text-align: center;
+    transition: 0.3s; margin-bottom: 40px;
+}
+.upload-zone:hover { border-color: var(--fm-primary); background: #eff6ff; }
+.upload-zone h2 { font-size: 1.2rem; margin-bottom: 20px; }
+
+.btn-upload-trigger {
+    background: white; color: var(--fm-primary); border: 2px solid var(--fm-primary);
+    padding: 12px 25px; border-radius: 10px; font-weight: 700; cursor: pointer; display: inline-block;
+}
+.btn-submit-file {
+    background: var(--fm-primary); color: white; border: none;
+    padding: 13px 30px; border-radius: 10px; font-weight: 700; cursor: pointer; margin-top: 15px;
+}
+
+/* --- 5. TABLES --- */
+.section-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+.fm-table-wrapper { width: 100%; overflow-x: auto; margin-bottom: 40px; border-radius: 12px; border: 1px solid var(--fm-border); }
+
+table.fm-table { width: 100%; border-collapse: collapse; background: white; }
+table.fm-table th { background: #f8fafc; padding: 15px 20px; text-align: left; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--fm-text-muted); border-bottom: 1px solid var(--fm-border); }
+table.fm-table td { padding: 18px 20px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
+
+/* File/Video Icons */
+.file-name { font-weight: 700; color: var(--fm-text); display: flex; align-items: center; gap: 10px; }
+.shared-label { font-size: 0.75rem; color: var(--fm-primary); background: #eff6ff; padding: 2px 8px; border-radius: 4px; margin-top: 4px; display: inline-block; }
+
+/* Actions */
+.fm-action-group { display: flex; gap: 8px; }
+.btn-fm { padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 5px; transition: 0.2s; }
+.btn-fm-view { color: var(--fm-primary); border: 1px solid #bfdbfe; }
+.btn-fm-download { color: var(--fm-success); border: 1px solid #bbf7d0; }
+.btn-fm-delete { color: var(--fm-danger); border: 1px solid #fecaca; background: none; cursor: pointer; }
+
+/* --- 6. SEND FORM GRID --- */
+.send-card { background: var(--fm-bg); padding: 30px; border-radius: 16px; border: 1px solid var(--fm-border); }
+.send-grid { display: grid; grid-template-columns: 1fr 1fr auto; gap: 20px; align-items: flex-end; }
+.send-group label { display: block; font-size: 0.7rem; font-weight: 800; color: var(--fm-text-muted); margin-bottom: 8px; text-transform: uppercase; }
+.send-group select { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--fm-border); outline: none; background: white; font-weight: 600; }
+
+        #container1 { margin-top: -100px; }
+        #page-loader { position: fixed; inset: 0; width: 100%; height: 100%; background: #ffffff; z-index: 99999; display: flex; align-items: center; justify-content: center; transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s; }
+        .loader-wrapper { position: relative; width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; }
+        .loader-logo { width: 70px; height: 70px; object-fit: contain; z-index: 10; animation: logo-pulse 2s ease-in-out infinite; }
+        .loader-circle { position: absolute; width: 110px; height: 110px; border: 4px solid #f1f5f9; border-top: 4px solid var(--primary); border-radius: 50%; animation: spin 1s cubic-bezier(0.55, 0.17, 0.45, 0.89) infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes logo-pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.8; } }
+        .loader-hidden { opacity: 0; visibility: hidden; }
+
+/* --- RESPONSIVE --- */
+/* --- 8. COMPREHENSIVE RESPONSIVE DESIGN --- */
+
+/* Tablet & Smaller Desktops (Under 1024px) */
+@media (max-width: 1024px) {
+    .table-nav { padding: 0 20px; }
+    main.files-main { padding: 15px; }
+    .fm-card { padding: 30px 20px; }
+    
+    .send-grid { 
+        grid-template-columns: 1fr 1fr; /* Drop to 2 columns */
+    }
+    .send-grid button { grid-column: span 2; width: 100%; }
+}
+
+/* Mobile View (Under 768px) */
+@media (max-width: 768px) {
+    body.files-page { padding-top: 75px; }
+    .table-nav { height: 65px; }
+    .nav-titles h1 { font-size: 0.95rem; }
+    .nav-titles span { display: none; } /* Hide sub-text to save room */
+
+    .fm-header h1 { font-size: 1.5rem; text-align: center; }
+
+    /* Upload Zone Stack */
+    .upload-zone { padding: 30px 15px; }
+    .btn-upload-trigger { width: 100%; text-align: center; }
+    .btn-submit-file { width: 100%; padding: 15px; }
+
+    /* Table Adjustments */
+    .fm-table th, .fm-table td { padding: 12px 10px; font-size: 0.8rem; }
+    
+    .fm-action-group { 
+        flex-direction: column; 
+        gap: 5px; 
+    }
+    .btn-fm { width: 100%; justify-content: center; }
+
+    /* Share Section Stack */
+    .send-card { padding: 20px; }
+    .send-grid { grid-template-columns: 1fr; gap: 15px; }
+    .send-grid button { grid-column: span 1; }
+}
+
+/* Small Phone View (Under 480px) */
+@media (max-width: 480px) {
+    .table-nav { padding: 0 10px; }
+    .nav-actions { gap: 5px; }
+    .btn-home, .btn-nav.logout { padding: 8px 12px; font-size: 0.7rem; }
+
+    .fm-card { border-radius: 0; border-left: none; border-right: none; }
+
+    /* Visual hint for swipeable table */
+    .fm-table-wrapper::after {
+        content: "← Swipe to view actions →";
+        display: block;
+        text-align: center;
+        font-size: 0.65rem;
+        color: var(--fm-text-muted);
+        padding: 10px;
+        background: var(--fm-bg);
+    }
+
+    /* Loader scaling */
+    .loader-wrapper { width: 100px; height: 100px; }
+    .loader-logo { width: 50px; height: 50px; }
+    .loader-circle { width: 85px; height: 85px; }
+}
+
+/* Landscape orientation fix for small phones */
+@media (max-height: 500px) and (orientation: landscape) {
+    body.files-page { padding-top: 60px; }
+    .table-nav { height: 50px; }
+    .fm-card { padding: 15px; }
+}

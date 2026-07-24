@@ -1,0 +1,9 @@
+AddType application/vnd.android.package-archive .apk
+# Custom Error Handling
+ErrorDocument 404 /error.php?code=404
+ErrorDocument 403 /error.php?code=403
+ErrorDocument 500 /error.php?code=500
+ErrorDocument 503 /error.php?code=503
+
+# Prevent directory browsing for security
+Options -Indexes
